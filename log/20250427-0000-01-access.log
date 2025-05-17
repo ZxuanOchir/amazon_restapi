@@ -1,0 +1,4 @@
+DELETE /api/v1/categories/67dfcbbbc573d7c4dcc115b5 400 93 - 1691.347 ms
+PUT /api/v1/categories/67dfcbbbc573d7c4dcc115b5 401 156 - 4.994 ms
+GET /api/v1/books 200 10204 - 584.462 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 200 1793 - 313.421 ms

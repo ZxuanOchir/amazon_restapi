@@ -1,0 +1,122 @@
+::1 - - [04/Apr/2025:07:30:25 +0000] "GET /api/v1/categories?select=name HTTP/1.1" 200 482 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:31:15 +0000] "GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 HTTP/1.1" 200 244 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:31:51 +0000] "GET /api/v1/categories/5e90478549941f52dcb01b34/bppks HTTP/1.1" 404 187 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:31:54 +0000] "GET /api/v1/categories/5e90478549941f52dcb01b34/books HTTP/1.1" 200 7434 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:32:18 +0000] "GET /api/v1/books HTTP/1.1" 200 31697 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:36:42 +0000] "GET /api/v1/categories HTTP/1.1" 200 1423 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:37:03 +0000] "GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 HTTP/1.1" 200 244 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:37:13 +0000] "GET /api/v1/categories HTTP/1.1" 200 1423 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:38:57 +0000] "GET /api/v1/books HTTP/1.1" 200 31697 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:44:45 +0000] "GET /api/v1/books HTTP/1.1" 200 31697 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:44:58 +0000] "GET /api/v1/categories/5e90478549941f52dcb01b34 HTTP/1.1" 200 1941 "-" "PostmanRuntime/7.43.3"
+::1 - - [04/Apr/2025:07:45:09 +0000] "GET /api/v1/categories/5e90478549941f52dcb01b34/books HTTP/1.1" 200 7434 "-" "PostmanRuntime/7.43.3"
+::1 - - [08/Apr/2025:09:05:27 +0000] "GET /api/v1/categories HTTP/1.1" 200 1423 "-" "PostmanRuntime/7.43.3"
+::1 - - [08/Apr/2025:09:14:14 +0000] "GET /api/v1/categories HTTP/1.1" 200 1423 "-" "PostmanRuntime/7.43.3"
+[0mGET /api/v1/categories [32m200[0m 405.954 ms - 1423[0m
+[0mGET /api/v1/categories [32m200[0m 410.783 ms - 1423[0m
+::1 - - [08/Apr/2025:09:20:19 +0000] "GET /api/v1/categories HTTP/1.1" 200 1423
+GET /api/v1/categories 200 1423 - 1264.029 ms
+GET /api/v1/categories 200 1423 - 359.878 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 244 - 363.207 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 244 - 653.312 ms
+GET /api/v1/categorie 404 155 - 1.244 ms
+GET /api/v1/categories 200 1423 - 326.674 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books 200 7434 - 191.635 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/ 200 1941 - 445.413 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 244 - 1855.964 ms
+GET /api/v1/books 200 31697 - 570.291 ms
+GET /api/v1/books 200 31697 - 6263.248 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 450 - 343.849 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 450 - 191.251 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 450 - 226.513 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=2 200 244 - 321.844 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page= - - - - ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=3&page=3 200 106 - 254.868 ms
+GET /api/v1/categories 200 1422 - 214.809 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=2&page=3 200 106 - 381.454 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=2&page=1 200 377 - 334.113 ms
+GET /api/v1/categories 200 1422 - 357.684 ms
+GET /api/v1/categories?select=name%20averagePrice%20averageRating&sort=averageRating%20-averagePrice&limit=2&page=1 200 377 - 329.065 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/ 200 7761 - 325.332 ms
+GET /api/v1/books 200 31697 - 349.017 ms
+GET /api/v1/books 200 31697 - 320.497 ms
+DELETE /api/v1/books/67ebb602fbb6311b6bb8ec0f 200 1815 - 225.649 ms
+GET /api/v1/books 200 29836 - 327.149 ms
+PUT /api/v1/books/67ebb602fbb6311b6bb8ec0e/photo 200 60 - 173.097 ms
+GET /api/v1/books 200 9696 - 379.386 ms
+GET /api/v1/books?select=name%20price 500 81 - 397.115 ms
+GET /api/v1/books?select=name%20price%20author 200 2015 - 402.388 ms
+GET /api/v1/books?select=name%20price%20 200 1766 - 371.742 ms
+GET /api/v1/books? 200 9696 - 342.416 ms
+GET /api/v1/books?name%20price&sort=price%20 500 63 - 141.415 ms
+GET /api/v1/books?name%20price&sort=price 200 117 - 247.557 ms
+GET /api/v1/books?select=name%20price&sort=price 200 1822 - 409.320 ms
+GET /api/v1/books?select=name%20price&sort=price&price[$lt]=20000 200 1822 - 393.551 ms
+GET /api/v1/books?select=name%20price&sort=price&price[$gt]=20000 200 1331 - 384.035 ms
+GET /api/v1/books/67e9e5f3492630f545296077 404 81 - 125.265 ms
+GET /api/v1/books 200 9696 - 395.122 ms
+GET /api/v1/books/67ebb602fbb6311b6bb8ec0e 200 1805 - 153.699 ms
+GET /api/v1/books/67ebb602fbb6311b6bb8ec0e/books 404 182 - 2.306 ms
+GET /api/v1/books/67ebb602fbb6311b6bb8ec0e 200 1805 - 106.362 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/ 200 7761 - 227.208 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books 200 7515 - 263.355 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?selectname%20price&price[$gt]=20000 200 117 - 238.471 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?selectname%20price&price[$gt]=5000 200 117 - 225.889 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?selectname%20price&price[$gt]=1000%27 400 77 - 150.383 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?selectname%20price&price[$gt]=1000 200 117 - 215.542 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$gt]=1000 200 995 - 258.964 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$gt]=10000 200 619 - 234.347 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$gt]=10000&page=2 200 131 - 243.740 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$gt]=10000&page=2 200 288 - 987.562 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=10000&page=2 200 130 - 265.558 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=2 200 505 - 223.517 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=3 200 130 - 262.056 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=1 200 460 - 215.818 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=2 200 505 - 267.897 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=3 200 130 - 431.664 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price& 200 460 - 237.015 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&limit=10 200 997 - 266.914 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&limit=17 200 984 - 237.830 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=3 200 130 - 268.163 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=2 200 505 - 241.446 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=40000&page=23 200 120 - 227.356 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2 200 505 - 265.750 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=3 200 130 - 203.304 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2 200 505 - 226.597 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2 200 505 - 290.524 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=3 200 130 - 219.392 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=1 200 460 - 230.947 ms
+POST /api/v1/books/ 200 797 - 318.063 ms
+POST /api/v1/books/ 200 797 - 258.983 ms
+POST /api/v1/books/ 200 808 - 242.030 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=1 200 461 - 265.835 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2 200 506 - 226.189 ms
+GET /api/v1/categories 200 1421 - 264.723 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2 200 506 - 258.466 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price& 200 461 - 259.725 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price& 200 461 - 250.947 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price& 200 461 - 796.977 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2 200 506 - 346.498 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=1 200 461 - 316.149 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?page=1&limit=5 200 7515 - 349.914 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=1 200 461 - 328.784 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=1&limit=3 200 672 - 318.325 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2&limit=3 200 293 - 308.617 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=&limit=3 200 672 - 306.130 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=3&limit=5 200 132 - 269.639 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2&limit=5 200 131 - 269.455 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=1&limit=5 200 836 - 296.202 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&page=1&limit=5 200 995 - 316.953 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=2&limit=5 200 131 - 321.847 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&price[$lt]=30000&page=3 200 131 - 284.640 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20-price&price[$lt]=30000&page=3 500 86 - 327.471 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=30000&page=3 200 131 - 308.575 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=30000&page=3 200 131 - 275.309 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=20000&page=3 200 131 - 359.709 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=20000&page=1 200 447 - 431.822 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=20000&page=2 200 342 - 565.941 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=2 200 470 - 518.237 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=3 200 460 - 316.441 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=4 200 342 - 320.317 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=5 200 132 - 292.954 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=2 200 470 - 308.203 ms

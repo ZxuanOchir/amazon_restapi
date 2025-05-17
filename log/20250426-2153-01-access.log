@@ -1,0 +1,15 @@
+POST /api/v1/users/login/ 200 304 - 382.264 ms
+PUT /api/v1/books/67ebb602fbb6311b6bb8ec0f 400 85 - 136.692 ms
+GET /api/v1/books 200 10283 - 1129.646 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 200 1793 - 139.335 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 200 1793 - 179.245 ms
+GET /api/v1/books 200 10204 - 387.170 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 200 1790 - 524.047 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 500 56 - 4.647 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 401 156 - 4.440 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 200 1793 - 721.949 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 500 41 - 2.886 ms
+PUT /api/v1/books/67f8e205f503976f00b0eae6 400 61 - 23.798 ms
+DELETE /api/v1/categories/67dfcbbbc573d7c4dcc115b5 500 50 - 19.746 ms
+DELETE /api/v1/categories/67dfcbbbc573d7c4dcc115b5 401 156 - 23.207 ms
+DELETE /api/v1/categories/67dfcbbbc573d7c4dcc115b5 400 93 - 327.417 ms

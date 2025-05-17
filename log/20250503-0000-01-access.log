@@ -1,0 +1,12 @@
+POST /api/v1/users/register 400 98 - 562.822 ms
+POST /api/v1/users/login/ 200 285 - 3169.522 ms
+POST /api/v1/users/login/ 200 285 - 215.059 ms
+GET /api/v1/users/register 400 77 - 2.747 ms
+GET /api/v1/users/register 400 77 - 1.452 ms
+GET /api/v1/users/register 400 77 - 1.246 ms
+POST /api/v1/users/register 200 414 - 8294.340 ms
+POST /api/v1/users/register 400 98 - 177.243 ms
+POST /api/v1/categories 500 41 - 1.205 ms
+POST /api/v1/users/login/ 401 88 - 115.463 ms
+POST /api/v1/users/register 500 100 - 2.865 ms
+POST /api/v1/users/register 200 420 - 175.915 ms
