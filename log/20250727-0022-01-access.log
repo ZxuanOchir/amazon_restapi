@@ -1,0 +1,17 @@
+GET /api/v1/categories 200 1419 - 350.577 ms
+POST /api/v1/users/login/ 200 323 - 1155.083 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=2 200 1118 - 1292.452 ms
+GET /api/v1/users/ 200 798 - 314.187 ms
+GET /api/v1/users/68235149bf375c46f3ba3c52 500 41 - 1.253 ms
+POST /api/v1/users/ 500 41 - 0.723 ms
+POST /api/v1/users/ 500 41 - 0.796 ms
+POST /api/v1/users/ 500 41 - 0.830 ms
+POST /api/v1/users/login/ 200 323 - 281.940 ms
+POST /api/v1/users/ 200 234 - 285.230 ms
+DELETE /api/v1/users/681db776117f2724e45aa963 500 41 - 0.771 ms
+GET /api/v1/categories 200 1419 - 1374.918 ms
+GET /api/v1/categories/5e90478549941f52dcb01b34/books?select=name%20price&sort=-price&price[$lt]=60000&page=2 200 1118 - 2421.199 ms
+GET /api/v1/books 200 10983 - 530.687 ms
+GET /api/v1/categories 200 1419 - 408.943 ms
+GET /api/v1/books 200 10983 - 621.668 ms
+GET /api/v1/categories 200 1419 - 417.381 ms

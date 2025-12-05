@@ -1,0 +1,15 @@
+GET /api/v1/categories 200 32684 - 1471.490 ms
+POST /api/v1/users/forgot-password 200 72 - 321.097 ms
+POST /api/v1/users/forgot-password 200 72 - 302.116 ms
+POST /api/v1/users/forgot-password 400 90 - 151.570 ms
+POST /api/v1/users/forgot-password 200 72 - 304.239 ms
+POST /api/v1/users/forgot-password 200 396 - 5842.067 ms
+POST /api/v1/users/forgot-password 200 396 - 4327.925 ms
+POST /api/v1/users/forgot-password 200 1239 - 4520.640 ms
+POST /api/v1/users/reset-password 500 87 - 12.827 ms
+POST /api/v1/users/reset-password 400 55 - 295.169 ms
+POST /api/v1/users/forgot-password 200 72 - 4794.458 ms
+POST /api/v1/users/reset-password 200 434 - 700.394 ms
+POST /api/v1/users/login/ 200 313 - 409.529 ms
+POST /api/v1/users/login/ 401 88 - 310.216 ms
+POST /api/v1/users/login/ 200 313 - 304.363 ms

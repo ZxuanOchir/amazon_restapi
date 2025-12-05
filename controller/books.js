@@ -36,72 +36,6 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.getUserBooks = asyncHandler(async (req, res, next) => {
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 5;
-  const sort = req.query.sort;
-  const select = req.query.select;
-
-  ['select', 'sort', 'page', 'limit'].forEach((el) => {
-    delete req.query[el];
-  });
-
-  const pagination = await paginate(page, limit, Book);
-
-  req.query.createUser = req.userId;
-  console.log(req.query);
-
-  const books = await Book.find(req.query, select)
-    .populate([
-      { path: 'category', select: 'name averagePrice' },
-      { path: 'createUser', select: 'name email' },
-      { path: 'updateUser', select: 'name email' },
-    ])
-    .sort(sort)
-    .skip(pagination.start - 1)
-    .limit(limit);
-
-  res.status(200).json({
-    success: true,
-    count: books.length,
-    data: books,
-    pagination,
-  });
-});
-
-// api / v1 /categories/:categoryId/books
-exports.getCategoryBooks = asyncHandler(async (req, res, next) => {
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 2;
-  const sort = req.query.sort;
-  const select = req.query.select;
-
-  ['select', 'sort', 'page', 'limit'].forEach((el) => {
-    delete req.query[el];
-  });
-
-  const pagination = await paginate(page, limit, Book);
-  const books = await Book.find(
-    { ...req.query, category: req.params.categoryId },
-    select
-  )
-    .populate([
-      { path: 'category', select: 'name averagePrice' },
-      { path: 'createUser', select: 'name email' },
-      { path: 'updateUser', select: 'name email' },
-    ])
-    .sort(sort)
-    .skip(pagination.start - 1)
-    .limit(limit);
-
-  res.status(200).json({
-    success: true,
-    count: books.length,
-    data: books,
-    pagination,
-  });
-});
-
 exports.getBook = asyncHandler(async (req, res, next) => {
   const book = await Book.findById(req.params.id).populate([
     { path: 'category', select: 'name averagePrice' },
@@ -116,6 +50,46 @@ exports.getBook = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: book,
+  });
+});
+
+//  PUT: api/v1/books/:BookId/photo
+exports.uploadBookPhoto = asyncHandler(async (req, res, next) => {
+  const book = await Book.findById(req.params.id);
+
+  if (!book) {
+    throw new MyError(req.params.id + ' ID тай ном байхгүй.', 400);
+  }
+
+  //image upload
+
+  const file = req.files.file;
+
+  if (!file.mimetype.startsWith('image')) {
+    throw new MyError('Та зураг upload хийнэ үү!', 400);
+  }
+
+  if (file.size > process.env.MAX_UPLOAD_FILE_SIZE) {
+    throw new MyError('Та зурагны хэмжээ хэтэрсэн байна!', 400);
+  }
+
+  file.name = `photo_${req.params.id}${path.parse(file.name).ext}`;
+
+  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
+    if (err) {
+      throw new MyError(
+        'Файлыг хуулах явцад алдаа гарлаа. Алдаа :' + err.message,
+        400
+      );
+    }
+
+    book.photo = file.name;
+    book.save();
+
+    res.status(200).json({
+      success: true,
+      data: file.name,
+    });
   });
 });
 
@@ -168,46 +142,6 @@ exports.updateBook = asyncHandler(async (req, res, next) => {
   });
 });
 
-//  PUT: api/v1/books/:BookId/photo
-exports.uploadBookPhoto = asyncHandler(async (req, res, next) => {
-  const book = await Book.findById(req.params.id);
-
-  if (!book) {
-    throw new MyError(req.params.id + ' ID тай ном байхгүй.', 400);
-  }
-
-  //image upload
-
-  const file = req.files.file;
-
-  if (!file.mimetype.startsWith('image')) {
-    throw new MyError('Та зураг upload хийнэ үү!', 400);
-  }
-
-  if (file.size > process.env.MAX_UPLOAD_FILE_SIZE) {
-    throw new MyError('Та зурагны хэмжээ хэтэрсэн байна!', 400);
-  }
-
-  file.name = `photo_${req.params.id}${path.parse(file.name).ext}`;
-
-  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
-    if (err) {
-      throw new MyError(
-        'Файлыг хуулах явцад алдаа гарлаа. Алдаа :' + err.message,
-        400
-      );
-    }
-
-    book.photo = file.name;
-    book.save();
-
-    res.status(200).json({
-      success: true,
-      data: file.name,
-    });
-  });
-});
-
 exports.deleteBook = asyncHandler(async (req, res, next) => {
   const book = await Book.findById(req.params.id);
 
@@ -230,5 +164,71 @@ exports.deleteBook = asyncHandler(async (req, res, next) => {
     success: true,
     data: book,
     whoDeleted: user.name,
+  });
+});
+
+// api / v1 /categories/:categoryId/books
+exports.getCategoryBooks = asyncHandler(async (req, res, next) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 2;
+  const sort = req.query.sort;
+  const select = req.query.select;
+
+  ['select', 'sort', 'page', 'limit'].forEach((el) => {
+    delete req.query[el];
+  });
+
+  const pagination = await paginate(page, limit, Book);
+  const books = await Book.find(
+    { ...req.query, category: req.params.categoryId },
+    select
+  )
+    .populate([
+      { path: 'category', select: 'name averagePrice' },
+      { path: 'createUser', select: 'name email' },
+      { path: 'updateUser', select: 'name email' },
+    ])
+    .sort(sort)
+    .skip(pagination.start - 1)
+    .limit(limit);
+
+  res.status(200).json({
+    success: true,
+    count: books.length,
+    data: books,
+    pagination,
+  });
+});
+
+exports.getUserBooks = asyncHandler(async (req, res, next) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 5;
+  const sort = req.query.sort;
+  const select = req.query.select;
+
+  ['select', 'sort', 'page', 'limit'].forEach((el) => {
+    delete req.query[el];
+  });
+
+  const pagination = await paginate(page, limit, Book);
+
+  req.query.createUser = req.userId;
+  console.log(req.query);
+
+  const books = await Book.find(req.query, select)
+    .populate([
+      { path: 'category', select: 'name averagePrice' },
+      { path: 'createUser', select: 'name email' },
+      { path: 'updateUser', select: 'name email' },
+    ])
+    .sort(sort)
+    .skip(pagination.start - 1)
+    .limit(limit);
+
+  res.status(200).json({
+    success: true,
+    count: books.length,
+    data: books,
+    pagination,
   });
 });

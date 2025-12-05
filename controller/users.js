@@ -2,6 +2,8 @@ const User = require('../models/User');
 const MyError = require('../utils/MyError');
 const asyncHandler = require('../middleware/asyncHandler');
 const paginate = require('../utils/paginate');
+const sendEmail = require('../utils/email');
+const crypto = require('crypto');
 
 // register
 exports.registerUser = asyncHandler(async (req, res, next) => {
@@ -129,5 +131,68 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
     success: true,
     data: user,
     message,
+  });
+});
+
+exports.forgotPassword = asyncHandler(async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    throw new MyError('Та нууц үг сэргээх имэйл ээ дамжуулна уу', 400);
+  }
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    throw new MyError(`${email}тэй хэрэглэгч олдсонгүй`, 400);
+  }
+
+  const resetToken = user.generatePasswordChangeToken();
+  await user.save({ validateBeforeSave: false });
+
+  // TODO: Send email with resetPasswordToken
+  const link = `https://amazon.mn/changepassword/${resetToken}`;
+  const message = `Сайн байна уу<br><br>Та нууц үг солих хүсэлт илгээлээ.<br> Нууц үгээ доорх линк дээр дарж солино уу?<br><br>${link}<br><br>Өдрийг сайхан өнгрүүлээрэй!`;
+
+  await sendEmail({
+    email: user.email,
+    subject: 'Нууц үг өөрчлөх хүсэлт',
+    message,
+  });
+
+  res.status(200).json({
+    success: true,
+    resetToken,
+  });
+});
+
+exports.resetPassword = asyncHandler(async (req, res, next) => {
+  if (!req.body.resetToken || !req.body.password) {
+    throw new MyError('Та токен болон нууц үгээ дамжуулна уу!', 400);
+  }
+
+  const encrypted = crypto
+    .createHash('sha256')
+    .update(req.body.resetToken)
+    .digest('hex');
+
+  const user = await User.findOne({
+    resetPasswordToken: encrypted,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+  if (!user) {
+    throw new MyError(`Хүчингүй токен`, 400);
+  }
+
+  user.password = req.body.password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+  await user.save();
+
+  const token = user.getJsonWebToken();
+
+  res.status(200).json({
+    success: true,
+    token,
+    user,
   });
 });

@@ -22,8 +22,8 @@ exports.getCategories = asyncHandler(async (req, res, next) => {
   const categories = await Category.find(req.query, select)
     .sort(sort)
     .skip(pagination.start - 1)
-    .limit(limit);
-
+    .limit(limit)
+    .populate('books');
   res.status(200).json({
     success: true,
     data: categories,
@@ -73,7 +73,7 @@ exports.deleteCategory = asyncHandler(async (req, res, next) => {
   if (!category) {
     throw new MyError(req.params.id + 'ID тай категори байхгүй', 400);
   }
-  ///category schema aas remove func bichih
+
   await category.deleteOne();
   res.status(200).json({
     success: true,

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -28,7 +29,7 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Нууц үгээ оруулна уу'],
     select: false,
   },
-  reserPasswordToken: String,
+  resetPasswordToken: String,
   resetPasswordExpire: Date,
   createdAt: {
     type: Date,
@@ -36,7 +37,11 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.pre('save', async function () {
+UserSchema.pre('save', async function (next) {
+  //Нууц үг өөрчлөгдөөгүй бол дараачийн миддлэваре лүү шилжүүл
+  if (!this.isModified('password')) return next();
+
+  //Нууц үг өөрчлөгдсөн
   console.time('salt');
   const salt = await bcrypt.genSalt(10); //random string
   console.timeEnd('salt');
@@ -59,6 +64,19 @@ UserSchema.methods.getJsonWebToken = function () {
 
 UserSchema.methods.checkPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
+};
+
+UserSchema.methods.generatePasswordChangeToken = function () {
+  const resetToken = crypto.randomBytes(20).toString('hex');
+
+  this.resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.resetPasswordExpire = Date.now() + 10 * 60 * 1000; //10 min after
+
+  return resetToken;
 };
 
 module.exports = mongoose.model('User', UserSchema);

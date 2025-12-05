@@ -9,7 +9,7 @@ exports.protect = asyncHandler(async (req, res, next) => {
     );
   }
 
-  const token = req.headers.authorization.split(' ')[1];
+  const token = req.headers.authorization.split(' ')[1]; // Bearer-Token 3124124235hurjgu3h58hg39g8035805g83hg853
 
   if (!token) {
     throw new MyError('Токен байхгүй байна!', 400);
