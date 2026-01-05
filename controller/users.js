@@ -39,16 +39,25 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
     throw new MyError('Имейл болон нууц үгээ шалгана уу!', 401);
   }
 
-  res.status(200).json({
-    token: user.getJsonWebToken(),
-    success: true,
-    user: {
-      _id: user._id,
-      email: user.email,
-      name: user.name,
-      role: user.role,
-    },
-  });
+  const token = user.getJsonWebToken();
+
+  const cookieOption = {
+    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+  };
+
+  res
+    .status(200)
+    .cookie('amazon_token', token, cookieOption)
+    .json({
+      token: user.getJsonWebToken(),
+      success: true,
+      user: {
+        _id: user._id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+      },
+    });
 });
 //test api requests user id and response
 exports.getUser = asyncHandler(async (req, res, next) => {

@@ -2,17 +2,19 @@ const asyncHandler = require('./asyncHandler');
 const jwt = require('jsonwebtoken');
 const MyError = require('../utils/MyError');
 exports.protect = asyncHandler(async (req, res, next) => {
-  if (!req.headers.authorization) {
+  let token = null;
+
+  if (req.headers.authorization) {
+    token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies) {
+    token = req.cookies['amazon-token'];
+  }
+
+  if (!token) {
     throw new MyError(
       'Энэ үйлдэлийг хийхэд таны эрх хүрэхгүй байна. Authorization header-ээр token оо дамжуулна уу.',
       401
     );
-  }
-
-  const token = req.headers.authorization.split(' ')[1]; // Bearer-Token 3124124235hurjgu3h58hg39g8035805g83hg853
-
-  if (!token) {
-    throw new MyError('Токен байхгүй байна!', 400);
   }
 
   const tokenObj = jwt.verify(token, process.env.JWT_SECRET);

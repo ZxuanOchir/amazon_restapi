@@ -19,14 +19,23 @@ const sequelize = new Sequelize(
 );
 
 const models = [
-  require('../models/sequelize/Course'),
-  require('../models/sequelize/Teacher'),
+  require('../models/sequelize/book'),
+  require('../models/sequelize/user'),
+  require('../models/sequelize/comment'),
+  require('../models/sequelize/category'),
 ];
 
 models.forEach((model) => {
   const seqModel = model(sequelize, Sequelize);
   db[seqModel.name] = seqModel;
 });
+
+// Define associations
+db.comment.belongsTo(db.user, { foreignKey: 'userId' });
+db.comment.belongsTo(db.book, { foreignKey: 'bookId' });
+
+db.user.hasMany(db.comment, { foreignKey: 'userId' });
+db.book.hasMany(db.comment, { foreignKey: 'bookId' });
 
 db.sequelize = sequelize;
 

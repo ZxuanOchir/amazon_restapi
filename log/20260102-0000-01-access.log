@@ -1,0 +1,12 @@
+POST /api/v1/users/login/ 200 323 - 610.399 ms
+GET /api/v1/users/2/comments 200 615 - 17.136 ms
+GET /api/v1/users/1/comments 200 1263 - 12.868 ms
+GET /api/v1/users/1/comments 200 1312 - 17.071 ms
+GET /api/v1/users/1/comments 200 1312 - 23.968 ms
+GET /api/v1/comments 200 713 - 11.581 ms
+GET /api/v1/comments 200 713 - 8.530 ms
+POST /api/v1/comments 500 84 - 16.676 ms
+POST /api/v1/users/login/ 200 323 - 969.399 ms
+POST /api/v1/users/login 500 84 - 3.136 ms
+POST /api/v1/users/login 500 84 - 1.321 ms
+POST /api/v1/users/login 500 84 - 0.918 ms
